@@ -1,3 +1,5 @@
+var pathCacher = require('pathCacher')
+
 var roleHarvester = {
 
     /** @param {Creep} creep **/
@@ -24,7 +26,8 @@ var roleHarvester = {
                     {
                         
                         if(creep.pickup(closeResources[0]) == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(closeResources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
+                            //creep.moveTo(closeResources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
+                            pathCacher.moveByPath(creep,closeResources[0].pos);
                             creep.memory.target = closeResources[0];
                         }
                     }
@@ -32,7 +35,8 @@ var roleHarvester = {
                     {
                         
                         if(!creep.pos.isNearTo(targets[0])) {
-                            creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffaa00'}});
+                            //creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffaa00'}});
+                            pathCacher.moveByPath(creep,targets[0].pos);
                             creep.memory.target = targets[0];
                         }
                     }
@@ -46,20 +50,23 @@ var roleHarvester = {
                        
                         if(!creep.pos.inRangeTo(Game.flags[Memory.Helper[creep.memory.spawnRoom].harvestWaitFlags[creep.memory.targetSource]],5))
                         {
-                            creep.moveTo(Game.flags[Memory.Helper[creep.memory.spawnRoom].harvestWaitFlags[creep.memory.targetSource]], {visualizePathStyle: {stroke: '#ffaa00'}});
+                            //creep.moveTo(Game.flags[Memory.Helper[creep.memory.spawnRoom].harvestWaitFlags[creep.memory.targetSource]], {visualizePathStyle: {stroke: '#ffaa00'}});
+                            pathCacher.moveByPath(creep,Game.flags[Memory.Helper[creep.memory.spawnRoom].harvestWaitFlags[creep.memory.targetSource]].pos);
                             creep.memory.target = Game.flags[Memory.Helper[creep.memory.spawnRoom].harvestWaitFlags[creep.memory.targetSource]];
                         }
                         else
                         {
                             if(creep.pickup(closeResources[0]) == ERR_NOT_IN_RANGE) {
-                                creep.moveTo(closeResources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
+                                //creep.moveTo(closeResources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
+                                pathCacher.moveByPath(creep,closeResources[0].pos);
                                 creep.memory.target = closeResources[0];
                             }
                         }
                     }
                     
                     else if(creep.pickup(closeResources[0]) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(closeResources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
+                        //creep.moveTo(closeResources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
+                        pathCacher.moveByPath(creep,closeResources[0].pos);
                         creep.memory.target = closeResources[0];
                     }
                 }
