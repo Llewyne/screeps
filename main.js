@@ -1,5 +1,4 @@
 var helper = require('helper');
-var pathCacher = require('pathCacher')
 const profiler = require('screeps-profiler');
 
 // This line monkey patches the global prototypes.
@@ -33,7 +32,6 @@ module.exports.loop = function() {
     {
         var rh = Memory.Helper[i];
         
-        
         if(!Game.spawns[rh.spawnName])
         {
             break;
@@ -41,7 +39,7 @@ module.exports.loop = function() {
         rh.room = Game.rooms[rh.room.name]
         var roomCreeps = _.filter(Game.creeps,(c)=>c.memory.spawnRoom == rh.room.name);
         
-        pathCacher.generatePaths(rh)
+        
         var amountMiners = _.filter(roomCreeps,(c)=>c.memory.role == 'miner' && c.ticksToLive > 150).length;
         var amountHarvesters = _.filter(roomCreeps,(c)=>c.memory.role == 'harvester' && c.ticksToLive > 150).length;
     	var minerInQueue = rh.pList[0] == 'miner' || rh.pList[1] == 'miner' || rh.pList[2] == 'miner' || rh.pList[3] == 'miner' || rh.pList[4] == 'miner' || rh.pList[0] == 'miniMiner' || rh.pList[1] == 'miniMiner'

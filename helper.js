@@ -52,10 +52,6 @@ function Helper(rm)
             this.amountLocalSources = 2; //The amount of local (easy to reach) sources we're mining
             this.amountRemoteSources = 3; //The amount of remote (hard to reach) sources we're mining
             this.usingRemote = 0;
-            
-            this.pathCache = {}
-            
-            
             break;
         case 'E65S91':
             //Sources
@@ -74,7 +70,6 @@ function Helper(rm)
             this.amountLocalSources = 2; //The amount of local (easy to reach) sources we're mining
             this.amountRemoteSources = 0; //The amount of remote (hard to reach) sources we're mining
             this.usingRemote = 0;
-            this.pathCache = {}
             break;
     }
 }
@@ -254,7 +249,7 @@ module.exports = {
         	if(creep.memory.role == 'harvester') {
         		roleHarvester.run(creep);
         	}
-        	/*(if(creep.memory.role == 'upgrader') {
+        	if(creep.memory.role == 'upgrader') {
         		roleUpgrader.run(creep);
         	}
         	if(creep.memory.role == 'builder') {
@@ -271,10 +266,10 @@ module.exports = {
         	}
         	if(creep.memory.role == 'attacker') {
         		roleAttacker.run(creep);
-        	}*/
+        	}
         	 if(creep.memory.role == 'miner') {
         		roleMiner.run(creep);
-        	}/*
+        	}
         	 if(creep.memory.role == 'claimer') {
         		roleClaimer.run(creep);
         	}
@@ -289,7 +284,7 @@ module.exports = {
         	}
         	if(creep.memory.role == 'mharvester') {
         		roleMHarvester.run(creep);
-        	}*/
+        	}
         }
     },
     
